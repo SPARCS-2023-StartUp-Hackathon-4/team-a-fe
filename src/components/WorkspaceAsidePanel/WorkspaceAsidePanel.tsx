@@ -9,6 +9,8 @@ import {
   RocketIcon,
   TextIcon,
 } from '@radix-ui/react-icons';
+import { useRouter } from 'next/router';
+import { Key } from 'react';
 import { styled } from 'styles/stitches';
 
 const PanelWrapper = styled('aside', {
@@ -73,6 +75,16 @@ const WorkspaceMenuItem = styled('li', {
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
   },
   marginBottom: '8px',
+  variants: {
+    active: {
+      true: {
+        color: '$blue900',
+        hover: {
+          backgroundColor: '$blue50',
+        },
+      },
+    },
+  },
 });
 
 const WorkspaceMenuLeftGroup = styled('div', {
@@ -109,9 +121,13 @@ const ReturnContainer = styled('div', {
   bottom: '16px',
 });
 
-interface WorkspaceAsidePanelProps {}
+interface WorkspaceAsidePanelProps {
+  menu: any;
+  onReturnClick?: () => void;
+}
 
-export const WorkspaceAsidePanel = () => {
+export const WorkspaceAsidePanel = ({ menu }: WorkspaceAsidePanelProps) => {
+  const router = useRouter();
   return (
     <PanelWrapper>
       <PanelHeader>
@@ -119,71 +135,30 @@ export const WorkspaceAsidePanel = () => {
         <PanelHeaderTitle>플릿컴퍼니의 공간</PanelHeaderTitle>
       </PanelHeader>
       <WorkspaceMenu>
-        <WorkspaceMenuGroup>
-          <WorkSpaceMenuTitle>사업 관리</WorkSpaceMenuTitle>
-          <WorkspaceMenuItem>
-            <WorkspaceMenuLeftGroup>
-              <Pencil2Icon />
-              사업계획서 작성
-            </WorkspaceMenuLeftGroup>
-            <ChevronRightIcon />
-          </WorkspaceMenuItem>
-          <WorkspaceMenuItem>
-            <WorkspaceMenuLeftGroup>
-              <RocketIcon />
-              포트폴리오/지표 관리
-            </WorkspaceMenuLeftGroup>
-            <ChevronRightIcon />
-          </WorkspaceMenuItem>
-        </WorkspaceMenuGroup>
-        <WorkspaceMenuGroup>
-          <WorkSpaceMenuTitle>에셋 관리</WorkSpaceMenuTitle>
-          <WorkspaceMenuItem>
-            <WorkspaceMenuLeftGroup>
-              <TextIcon />
-              상수 텍스트 추가/제거
-            </WorkspaceMenuLeftGroup>
-            <ChevronRightIcon />
-          </WorkspaceMenuItem>
-          <WorkspaceMenuItem>
-            <WorkspaceMenuLeftGroup>
-              <Component1Icon />
-              컴포넌트 관리
-            </WorkspaceMenuLeftGroup>
-            <ChevronRightIcon />
-          </WorkspaceMenuItem>
-          <WorkspaceMenuItem>
-            <WorkspaceMenuLeftGroup>
-              <LayersIcon />
-              다이어그램 관리
-            </WorkspaceMenuLeftGroup>
-            <ChevronRightIcon />
-          </WorkspaceMenuItem>
-          <WorkspaceMenuItem>
-            <WorkspaceMenuLeftGroup>
-              <Link2Icon />
-              하이퍼링크 관리
-            </WorkspaceMenuLeftGroup>
-            <ChevronRightIcon />
-          </WorkspaceMenuItem>
-        </WorkspaceMenuGroup>
-        <WorkspaceMenuGroup>
-          <WorkSpaceMenuTitle>환경 설정</WorkSpaceMenuTitle>
-          <WorkspaceMenuItem>
-            <WorkspaceMenuLeftGroup>
-              <FontSizeIcon />
-              커스텀 폰트 관리
-            </WorkspaceMenuLeftGroup>
-            <ChevronRightIcon />
-          </WorkspaceMenuItem>
-          <WorkspaceMenuItem>
-            <WorkspaceMenuLeftGroup>
-              <CounterClockwiseClockIcon />
-              문서 히스토리
-            </WorkspaceMenuLeftGroup>
-            <ChevronRightIcon />
-          </WorkspaceMenuItem>
-        </WorkspaceMenuGroup>
+        {menu.map((item: any, key: Key) => {
+          return (
+            <WorkspaceMenuGroup key={key}>
+              <WorkSpaceMenuTitle>{item.title}</WorkSpaceMenuTitle>
+              {item.items.map((item: any, key: Key) => {
+                return (
+                  <WorkspaceMenuItem
+                    key={key}
+                    onClick={() => {
+                      router.push(item.url);
+                    }}
+                    active={router.pathname === item.url}
+                  >
+                    <WorkspaceMenuLeftGroup>
+                      {item.icon}
+                      {item.name}
+                    </WorkspaceMenuLeftGroup>
+                    <ChevronRightIcon />
+                  </WorkspaceMenuItem>
+                );
+              })}
+            </WorkspaceMenuGroup>
+          );
+        })}
       </WorkspaceMenu>
       <ReturnContainer>
         <ReturnButton>대시보드로 돌아가기</ReturnButton>
