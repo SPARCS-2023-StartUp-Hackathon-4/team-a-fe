@@ -21,6 +21,7 @@ class _Document extends Document {
         <body>
           <Main />
           <NextScript />
+          <div id="portal" />
         </body>
       </Html>
     );
