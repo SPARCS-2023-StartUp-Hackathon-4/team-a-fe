@@ -1,14 +1,4 @@
-import {
-  ChevronRightIcon,
-  Component1Icon,
-  CounterClockwiseClockIcon,
-  FontSizeIcon,
-  LayersIcon,
-  Link2Icon,
-  Pencil2Icon,
-  RocketIcon,
-  TextIcon,
-} from '@radix-ui/react-icons';
+import { ChevronRightIcon } from '@radix-ui/react-icons';
 import { useRouter } from 'next/router';
 import { Key } from 'react';
 import { styled } from 'styles/stitches';
