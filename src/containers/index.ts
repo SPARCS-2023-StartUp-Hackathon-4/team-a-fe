@@ -1,2 +1,2 @@
 export * from './Main';
-export * from './Fonts';
+export * from './workspace';
