@@ -1,3 +1,16 @@
-import { Main } from 'containers';
+import { GetServerSideProps } from 'next';
+import { redirect } from 'utils/redirect';
 
-export default Main;
+const index = () => {};
+
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+  if (res) {
+    redirect(res, '/workspace/business/plan');
+  }
+
+  return {
+    props: {},
+  };
+};
+
+export default index;
