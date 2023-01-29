@@ -80,11 +80,11 @@ const LayoutMenuArr = [
         icon: <FontSizeIcon />,
         url: '/workspace/settings/fonts',
       },
-      {
-        name: '문서 히스토리',
-        icon: <CounterClockwiseClockIcon />,
-        url: '/workspace/settings/history',
-      },
+      // {
+      //   name: '문서 히스토리',
+      //   icon: <CounterClockwiseClockIcon />,
+      //   url: '/workspace/settings/history',
+      // },
     ],
   },
 ];
