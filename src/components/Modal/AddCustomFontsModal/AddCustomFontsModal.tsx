@@ -59,7 +59,13 @@ export const AddCustomFontsModal = ({
             </ModalDescription>
             <Input type="text" placeholder="폰트 이름을 입력해주세요." />
             <Input type="text" placeholder="폰트 URL을 입력해주세요." />
-            <Button btnType="default" fullSize>
+            <Button
+              btnType="default"
+              fullSize
+              onClick={() => {
+                alert('현재는 지원하지 않는 기능입니다.');
+              }}
+            >
               추가하기
             </Button>
           </Container>
