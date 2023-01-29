@@ -95,9 +95,9 @@ export const Fonts = () => {
       <Division />
       <ElementContainer>
         <FontsItem>
-          <FontsText>스포카 한 산스 네오</FontsText>
+          <FontsText>Impact</FontsText>
           <FontsText>
-            spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css
+            https://www.dafontfree.io/download/impact/?wpdmdl=56846&refresh=63d597217e3571674942241&ind=1591711299933&filename=Impact-Font.zip
           </FontsText>
         </FontsItem>
       </ElementContainer>

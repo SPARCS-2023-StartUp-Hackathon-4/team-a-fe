@@ -71,9 +71,6 @@ export const Hyperlinks = () => {
         <Collapse>
           <CollapseItem />
         </Collapse>
-        <Collapse>
-          <CollapseItem />
-        </Collapse>
       </ElementContainer>
     </WorkspaceLayout>
   );
