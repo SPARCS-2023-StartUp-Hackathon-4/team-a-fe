@@ -17,6 +17,10 @@ class _Document extends Document {
             id="stitches"
             dangerouslySetInnerHTML={{ __html: stitchesReset() }}
           />
+          <script
+            src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js"
+            referrerPolicy="origin"
+          ></script>
         </Head>
         <body>
           <Main />
